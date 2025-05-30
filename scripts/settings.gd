@@ -49,8 +49,9 @@ func refresh_in_live():
 		root.outputbox.add_theme_font_size_override("bold_font_size", Globals.settings_font_size)
 	if "inputbox" in root:
 		root.load_settings()
-	get_node("../").queue_free()
 	
+	get_tree().current_scene.get_node("VBoxContainer/MenuBar").show()
+	get_node("../").queue_free()
 
 
 func _on_browse_pressed() -> void:
@@ -72,8 +73,9 @@ func _on_reset_pressed() -> void:
 
 
 func _on_reset_3_pressed() -> void:
+	get_tree().current_scene.get_node("VBoxContainer/MenuBar").show()
 	get_node("../").queue_free()
 
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
-	Globals.settings_sound_enabled = toggled_on
+	pass
