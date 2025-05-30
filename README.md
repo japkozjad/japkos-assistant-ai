@@ -15,6 +15,8 @@ Download or Clone this repository and import it to Godot Engine (4.4.1), then in
 
 # Note for users
 Please be aware that this program is not perfect and errors and bugs may occur. Any help with resolving them is appreciated.
+Before you will open the program, make sure you downloaded the GGUF model. Without it program will just crash.
+Recommended option is to put it inside this directory and rename it to "model.gguf" because program will recognize it automatically.
 
 # Screenshots
 ![Start Screen](https://raw.githubusercontent.com/japkozjad/japkos-assistant-ai/56695b7f5e61b4297441d1d4be63d50babf839e5/screenshots/Screenshot%202025-05-30%20192711.png)
