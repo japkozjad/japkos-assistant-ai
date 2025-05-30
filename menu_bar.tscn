@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://2p3v3gsbswr0"]
+
+[ext_resource type="Script" uid="uid://kfvlx4cemypg" path="res://menu_bar.gd" id="1_b2188"]
+[ext_resource type="Texture2D" uid="uid://bxcrhhfa72pf6" path="res://resources/icons/12px/tabler--file-info.svg" id="2_1yk3r"]
+[ext_resource type="Texture2D" uid="uid://bsqrsdjv7vq5g" path="res://resources/icons/12px/tabler--copy.svg" id="2_xu0f1"]
+[ext_resource type="Texture2D" uid="uid://cdo4a7vq4sd3n" path="res://resources/icons/12px/tabler--copy-plus.svg" id="3_fiju4"]
+[ext_resource type="Texture2D" uid="uid://cgbkoygmvj5je" path="res://resources/icons/12px/tabler--world-www.svg" id="3_neq3w"]
+[ext_resource type="Texture2D" uid="uid://dj527tbe3wpp7" path="res://resources/icons/12px/tabler--notes.svg" id="4_fiju4"]
+[ext_resource type="Texture2D" uid="uid://dp3uyt0qnodpt" path="res://resources/icons/12px/svg-spinners--blocks-shuffle-3.svg" id="4_qdugl"]
+[ext_resource type="Texture2D" uid="uid://c53axvxl4ymsl" path="res://resources/icons/12px/tabler--brand-discord.svg" id="7_bafnm"]
+
+[node name="MenuBar" type="MenuBar"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+flat = true
+script = ExtResource("1_b2188")
+
+[node name="Edit" type="PopupMenu" parent="."]
+item_count = 2
+item_0/text = "Copy Output"
+item_0/icon = ExtResource("2_xu0f1")
+item_0/id = 0
+item_1/text = "Paste to Input"
+item_1/icon = ExtResource("3_fiju4")
+item_1/id = 1
+
+[node name="Tools" type="PopupMenu" parent="."]
+item_count = 3
+item_0/text = "Application Settings"
+item_0/icon = ExtResource("4_qdugl")
+item_0/id = 0
+item_1/id = 1
+item_1/separator = true
+item_2/text = "Notepad"
+item_2/icon = ExtResource("4_fiju4")
+item_2/id = 2
+
+[node name="Help" type="PopupMenu" parent="."]
+item_count = 4
+item_0/text = "About..."
+item_0/icon = ExtResource("2_1yk3r")
+item_0/id = 0
+item_1/id = 1
+item_1/separator = true
+item_2/text = "Japkozjad's Website"
+item_2/icon = ExtResource("3_neq3w")
+item_2/id = 2
+item_3/text = "Join my Discord Server"
+item_3/icon = ExtResource("7_bafnm")
+item_3/id = 3
+
+[connection signal="id_pressed" from="Edit" to="." method="_on_edit_id_pressed"]
+[connection signal="id_pressed" from="Tools" to="." method="_on_tools_id_pressed"]
+[connection signal="id_pressed" from="Help" to="." method="_on_help_id_pressed"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciampnjymdpbi"]
+
+[ext_resource type="Script" uid="uid://git31y2d5o45" path="res://nobodywhomodule.gd" id="1_nt3cv"]
+[ext_resource type="AudioStream" uid="uid://c44dyx87h5dby" path="res://resources/sounds/token_sound.wav" id="2_rajne"]
+[ext_resource type="AudioStream" uid="uid://b76lpjh30qumg" path="res://resources/sounds/gen_finished.wav" id="3_omw2y"]
+
+[node name="Nobodywhomodule" type="Node"]
+script = ExtResource("1_nt3cv")
+
+[node name="NobodyWhoChat" type="NobodyWhoChat" parent="." node_paths=PackedStringArray("model_node")]
+model_node = NodePath("../NobodyWhoModel")
+
+[node name="NobodyWhoModel" type="NobodyWhoModel" parent="."]
+
+[node name="NewTokenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rajne")
+volume_db = -15.0
+
+[node name="GenCompleteSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_omw2y")
+volume_db = -6.0
+
+[connection signal="response_finished" from="NobodyWhoChat" to="." method="_on_nobody_who_chat_response_finished"]
+[connection signal="response_updated" from="NobodyWhoChat" to="." method="_on_nobody_who_chat_response_updated"]

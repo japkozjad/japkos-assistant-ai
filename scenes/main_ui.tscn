@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjjn2nv51j8vl"]
+
+[ext_resource type="Texture2D" uid="uid://dxx8a12172asq" path="res://resources/icons/64px/fluent-color--text-edit-style.svg" id="1_fnul3"]
+[ext_resource type="Script" uid="uid://dyrk5uggb5qdu" path="res://scripts/main_ui.gd" id="1_j6a7c"]
+[ext_resource type="Texture2D" uid="uid://dldv5ak7a7m4t" path="res://resources/icons/64px/fluent-color--number-symbol.svg" id="2_e6fyy"]
+[ext_resource type="PackedScene" uid="uid://2p3v3gsbswr0" path="res://menu_bar.tscn" id="2_scoti"]
+[ext_resource type="Texture2D" uid="uid://c74eeb6u3wjyw" path="res://resources/icons/64px/fluent-color--bot-sparkle.svg" id="3_j6a7c"]
+
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j6a7c")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBar" parent="VBoxContainer" instance=ExtResource("2_scoti")]
+layout_mode = 2
+flat = false
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Choose option:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="DescriptionGenerator" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(290, 64)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Click here to start description generation.
+Useful for:
+ - Social Media posts,
+ - Audio track descriptions for Music Video."
+icon = ExtResource("1_fnul3")
+alignment = 0
+
+[node name="RoleplayGenerator" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(290, 64)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Click here to start story plot generation.
+Useful for:
+ - Roleplay ideas for generative AI like
+Silly Tavern, TavernAI or to real roleplay."
+icon = ExtResource("2_e6fyy")
+alignment = 0
+
+[node name="CharacterCreator" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(290, 64)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Click here to start character card creation
+assistant.
+Useful for:
+ - Making a character card for generative AI."
+icon = ExtResource("3_j6a7c")
+alignment = 0
+
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/GridContainer/DescriptionGenerator" to="." method="_on_description_generator_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/GridContainer/RoleplayGenerator" to="." method="_on_roleplay_generator_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/GridContainer/CharacterCreator" to="." method="_on_character_creator_pressed"]

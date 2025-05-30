@@ -1,0 +1,163 @@
+[gd_scene load_steps=7 format=3 uid="uid://1yexiw4dax3n"]
+
+[ext_resource type="PackedScene" uid="uid://2p3v3gsbswr0" path="res://menu_bar.tscn" id="1_3toc3"]
+[ext_resource type="Script" uid="uid://y3ta84jycs58" path="res://scripts/character_maker_interactive.gd" id="1_85rei"]
+[ext_resource type="Texture2D" uid="uid://dco45ipp3yyil" path="res://resources/icons/12px/tabler--brackets-contain.svg" id="2_3toc3"]
+[ext_resource type="Texture2D" uid="uid://dfgsji2v44yly" path="res://resources/icons/12px/fluent-emoji--horse.svg" id="3_rnkae"]
+[ext_resource type="Texture2D" uid="uid://bllv22nr8d7hk" path="res://resources/icons/12px/fluent-emoji--fox.svg" id="4_85rei"]
+[ext_resource type="PackedScene" uid="uid://ciampnjymdpbi" path="res://nobodywhomodule.tscn" id="6_12736"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_85rei")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="MenuBar" parent="VBoxContainer" instance=ExtResource("1_3toc3")]
+layout_mode = 2
+flat = false
+
+[node name="AdvModeSwitch" type="Button" parent="VBoxContainer/MenuBar"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -133.0
+offset_bottom = 22.0
+grow_horizontal = 0
+text = "Switch to Advanced Mode"
+flat = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InputBox" type="LineEdit" parent="VBoxContainer/Panel"]
+layout_mode = 2
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -80.0
+offset_right = -8.0
+offset_bottom = -48.0
+placeholder_text = "Type here your prompt"
+caret_blink = true
+
+[node name="MenuButton" type="MenuButton" parent="VBoxContainer/Panel/InputBox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+icon = ExtResource("2_3toc3")
+icon_alignment = 1
+item_count = 6
+popup/item_0/text = "New Chat"
+popup/item_0/id = 0
+popup/item_1/text = "Randomize Seed"
+popup/item_1/id = 1
+popup/item_2/text = "Longer Response"
+popup/item_2/id = 2
+popup/item_3/id = 3
+popup/item_3/separator = true
+popup/item_4/text = "Initiate Pony OC creation"
+popup/item_4/icon = ExtResource("3_rnkae")
+popup/item_4/id = 4
+popup/item_5/text = "Initiate Furry OC creation"
+popup/item_5/icon = ExtResource("4_85rei")
+popup/item_5/id = 5
+
+[node name="MainMenu" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -40.0
+offset_right = 120.0
+offset_bottom = -9.0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Main Menu"
+icon_alignment = 1
+
+[node name="RestartAI" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -40.0
+offset_right = -128.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Restart AI"
+
+[node name="Generate" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Generate"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -88.0
+
+[node name="OutputBox" type="RichTextLabel" parent="VBoxContainer/Panel/HSplitContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+bbcode_enabled = true
+scroll_following = true
+context_menu_enabled = true
+selection_enabled = true
+
+[node name="Nobodywhomodule" parent="." instance=ExtResource("6_12736")]
+
+[node name="AI_REPLYMODULE" type="Node" parent="."]
+
+[connection signal="text_submitted" from="VBoxContainer/Panel/InputBox" to="." method="_on_input_box_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/Panel/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/RestartAI" to="." method="_on_restart_ai_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/Generate" to="." method="_on_generate_pressed"]

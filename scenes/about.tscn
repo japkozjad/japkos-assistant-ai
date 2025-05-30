@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmf7kithm8ni"]
+
+[ext_resource type="Script" uid="uid://bavu3o6y3755w" path="res://scripts/about.gd" id="1_hx3vx"]
+
+[sub_resource type="SystemFont" id="SystemFont_hx3vx"]
+font_names = PackedStringArray("Monospace")
+font_italic = true
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_j4mam"]
+font_names = PackedStringArray("Sans-Serif")
+subpixel_positioning = 0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hx3vx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+
+[node name="About" type="RichTextLabel" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/line_separation = 2
+theme_override_fonts/italics_font = SubResource("SystemFont_hx3vx")
+theme_override_fonts/bold_italics_font = SubResource("SystemFont_j4mam")
+bbcode_enabled = true
+text = "[shake rate=3.0 level=2 connected=1][img width=\"100\"]res://icon_original.png[/img]
+
+[color=green][font_size=22][b]Japko’s Assistant AI[/b][/font_size][/color]
+[i]Version [color=yellow]%versionplaceholder%[/color][/i]
+(C) [url=https://japkozjad.github.io]Japkozjad[/url] 2025
+
+This application uses [url=https://github.com/nobodywho-ooo/nobodywho]NobodyWho[/url] plugin to handle LLMs stuff."
+context_menu_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_tab_index = 0
+
+[node name="Licenses" type="HBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ItemList" type="ItemList" parent="TabContainer/Licenses"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+item_count = 6
+item_0/text = "Japko's Assistant AI"
+item_1/text = "NobodyWho"
+item_2/text = "Fluent Icons"
+item_3/text = "Fluent Emojis"
+item_4/text = "Famicons Icons"
+item_5/text = "Tabler Icons"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Licenses"]
+layout_mode = 2
+size_flags_horizontal = 3
+context_menu_enabled = true
+horizontal_alignment = 1
+
+[connection signal="meta_clicked" from="TabContainer/About" to="." method="_on_about_meta_clicked"]
+[connection signal="item_selected" from="TabContainer/Licenses/ItemList" to="." method="_on_item_list_item_selected"]

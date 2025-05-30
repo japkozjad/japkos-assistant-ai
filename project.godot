@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Japko's Assistant AI"
+config/description="AI type sh_t"
+config/version="1.0"
+run/main_scene="uid://bjjn2nv51j8vl"
+config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/show_image=false
+config/icon="uid://dy7u8alxa8qml"
+config/windows_native_icon="res://favicon.ico"
+
+[autoload]
+
+Globals="*res://scripts/globals.gd"
+
+[display]
+
+window/vsync/vsync_mode=0
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "green",
+"res://prompts/": "teal",
+"res://resources/": "blue",
+"res://scenes/": "red",
+"res://scripts/": "purple"
+}
+
+[gui]
+
+theme/custom="uid://bgu4pi27okjl8"
+
+[rendering]
+
+renderer/rendering_method="mobile"

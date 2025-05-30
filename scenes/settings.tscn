@@ -1,0 +1,206 @@
+[gd_scene load_steps=2 format=3 uid="uid://8hee6nwqc4ey"]
+
+[ext_resource type="Script" uid="uid://drpecl2fdxswx" path="res://scripts/settings.gd" id="1_5p8wc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5p8wc")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Model:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Model source:"
+
+[node name="LineEdit" type="LineEdit" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Default source is ./model.gguf"
+
+[node name="Browse" type="Button" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Browse"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Context size"
+
+[node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 8192.0
+step = 128.0
+value = 4096.0
+rounded = true
+tick_count = 13
+
+[node name="Label2" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "... tokens"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Appearance:"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Theme:"
+
+[node name="OptionButton" type="OptionButton" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 1
+popup/item_0/text = "Dark (Default)"
+popup/item_0/id = 0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Output font size:"
+
+[node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 6.0
+max_value = 72.0
+value = 12.0
+rounded = true
+tick_count = 67
+
+[node name="Label2" type="Label" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "... px"
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "AaBbYyZz123"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Sound:"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Panel/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enable token generation sounds (this can be really annoying!)"
+
+[node name="Reset" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -32.0
+offset_right = -198.0
+offset_bottom = -8.0
+text = "Reset to defaults"
+
+[node name="Reset2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -32.0
+offset_right = -6.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Save settings"
+
+[node name="Reset3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -32.0
+offset_right = -102.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Cancel"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[connection signal="text_submitted" from="Panel/ScrollContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="Panel/ScrollContainer/VBoxContainer/HBoxContainer/Browse" to="." method="_on_browse_pressed"]
+[connection signal="value_changed" from="Panel/ScrollContainer/VBoxContainer/HBoxContainer2/HSlider" to="." method="_on_h_slider_context_value_changed"]
+[connection signal="value_changed" from="Panel/ScrollContainer/VBoxContainer/HBoxContainer4/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="Panel/ScrollContainer/VBoxContainer/HBoxContainer5/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Reset2" to="." method="_on_reset_2_pressed"]
+[connection signal="pressed" from="Reset3" to="." method="_on_reset_3_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

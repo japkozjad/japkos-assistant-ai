@@ -1,0 +1,212 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvtuv6qf4pxwi"]
+
+[ext_resource type="Script" uid="uid://bfcibglqdi43i" path="res://scripts/roleplay_gen.gd" id="1_mkxkw"]
+[ext_resource type="Script" uid="uid://c82lqstcijlk4" path="res://scripts/injectionsbox.gd" id="2_0w0cm"]
+[ext_resource type="PackedScene" uid="uid://2p3v3gsbswr0" path="res://menu_bar.tscn" id="2_1pv0f"]
+[ext_resource type="PackedScene" uid="uid://ciampnjymdpbi" path="res://nobodywhomodule.tscn" id="2_6lkeb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mkxkw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="MenuBar" parent="VBoxContainer" instance=ExtResource("2_1pv0f")]
+layout_mode = 2
+flat = false
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InputBox" type="LineEdit" parent="VBoxContainer/Panel"]
+layout_mode = 2
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -80.0
+offset_right = -8.0
+offset_bottom = -48.0
+placeholder_text = "Type here your prompt"
+caret_blink = true
+
+[node name="MainMenu" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -40.0
+offset_right = 120.0
+offset_bottom = -9.0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Main Menu"
+icon_alignment = 1
+
+[node name="RestartAI" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -40.0
+offset_right = -248.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Restart AI"
+
+[node name="Injections" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -40.0
+offset_right = -128.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Injections"
+
+[node name="Generate" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Generate"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -88.0
+
+[node name="OutputBox" type="RichTextLabel" parent="VBoxContainer/Panel/HSplitContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+bbcode_enabled = true
+scroll_following = true
+context_menu_enabled = true
+selection_enabled = true
+
+[node name="Injectionsbox" type="Panel" parent="VBoxContainer/Panel/HSplitContainer"]
+visible = false
+custom_minimum_size = Vector2(304, 0)
+layout_mode = 2
+script = ExtResource("2_0w0cm")
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/HSplitContainer/Injectionsbox"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 24.0
+grow_horizontal = 2
+text = "Injections"
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Panel/HSplitContainer/Injectionsbox"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 2
+item_count = 1
+popup/item_0/text = "test"
+popup/item_0/id = 0
+
+[node name="InjectionsBox" type="TextEdit" parent="VBoxContainer/Panel/HSplitContainer/Injectionsbox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+wrap_mode = 1
+
+[node name="GrimdarkCheck" type="CheckButton" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -40.0
+offset_right = 302.0
+offset_bottom = -9.0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Include Grimdark Content"
+flat = true
+
+[node name="NSFWCheck" type="CheckButton" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 304.0
+offset_top = -40.0
+offset_right = 462.0
+offset_bottom = -9.0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Include NSFW Content"
+flat = true
+
+[node name="Nobodywhomodule" parent="." instance=ExtResource("2_6lkeb")]
+
+[connection signal="text_submitted" from="VBoxContainer/Panel/InputBox" to="." method="_on_input_box_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/Panel/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/RestartAI" to="." method="_on_restart_ai_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/Injections" to="." method="_on_injections_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/Generate" to="." method="_on_generate"]
+[connection signal="item_selected" from="VBoxContainer/Panel/HSplitContainer/Injectionsbox/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="text_changed" from="VBoxContainer/Panel/HSplitContainer/Injectionsbox/InjectionsBox" to="." method="_on_injections_box_text_changed"]
+[connection signal="text_set" from="VBoxContainer/Panel/HSplitContainer/Injectionsbox/InjectionsBox" to="." method="_on_injections_box_text_set"]
+[connection signal="toggled" from="VBoxContainer/Panel/GrimdarkCheck" to="." method="_on_grimdark_check_toggled"]
+[connection signal="toggled" from="VBoxContainer/Panel/NSFWCheck" to="." method="_on_nsfw_check_toggled"]

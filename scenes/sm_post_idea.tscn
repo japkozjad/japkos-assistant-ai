@@ -1,0 +1,139 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpq0ed7onkf81"]
+
+[ext_resource type="PackedScene" uid="uid://2p3v3gsbswr0" path="res://menu_bar.tscn" id="2_6luo0"]
+[ext_resource type="Script" uid="uid://4wynqqxdftin" path="res://scripts/sm_post_idea.gd" id="2_8qlaq"]
+[ext_resource type="PackedScene" uid="uid://ciampnjymdpbi" path="res://nobodywhomodule.tscn" id="2_c670v"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_8qlaq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="MenuBar" parent="VBoxContainer" instance=ExtResource("2_6luo0")]
+layout_mode = 2
+flat = false
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 32.0
+text = "System Prompt:"
+vertical_alignment = 1
+
+[node name="PromptSelection" type="OptionButton" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 88.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 32.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Social Media Post"
+popup/item_0/id = 0
+popup/item_1/text = "Audio Track Description"
+popup/item_1/id = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = -8.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+dragging_enabled = false
+
+[node name="InputBox" type="TextEdit" parent="VBoxContainer/Panel/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Type your prompt here:"
+wrap_mode = 1
+scroll_smooth = true
+caret_blink = true
+
+[node name="OutputBox" type="TextEdit" parent="VBoxContainer/Panel/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Here you'll get your response."
+wrap_mode = 1
+scroll_smooth = true
+caret_blink = true
+
+[node name="MainMenu" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -40.0
+offset_right = 120.0
+offset_bottom = -9.0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Main Menu"
+icon_alignment = 1
+
+[node name="RestartAI" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -40.0
+offset_right = -128.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Restart AI"
+
+[node name="Generate" type="Button" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Generate"
+
+[node name="Nobodywhomodule" parent="." instance=ExtResource("2_c670v")]
+
+[connection signal="item_selected" from="VBoxContainer/Panel/PromptSelection" to="." method="_on_prompt_selection_item_selected"]
+[connection signal="pressed" from="VBoxContainer/Panel/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/RestartAI" to="." method="_on_restart_ai_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/Generate" to="." method="_on_generate_pressed"]
