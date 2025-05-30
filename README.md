@@ -1,7 +1,7 @@
 # Japko's Assistant AI
 A simple program in Godot for AI text generation which uses NobodyWho plugin.
 
-https://raw.githubusercontent.com/japkozjad/japkos-assistant-ai/56695b7f5e61b4297441d1d4be63d50babf839e5/screenshots/Screenshot%202025-05-30%20192711.png
+![Start Screen](https://raw.githubusercontent.com/japkozjad/japkos-assistant-ai/56695b7f5e61b4297441d1d4be63d50babf839e5/screenshots/Screenshot%202025-05-30%20192711.png)
 
 NobodyWho plugin: https://github.com/nobodywho-ooo/nobodywho
 
